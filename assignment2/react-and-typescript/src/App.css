@@ -36,3 +36,62 @@
     transform: rotate(360deg);
   }
 }
+
+/* -------------------------------------- */
+.movie-card {
+  list-style: none;
+  height: 200px;
+  width: 70vw;
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-card img {
+  height: 200px;
+  width: 200px;
+}
+
+.pagination {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination li {
+  display: inline-block;
+  padding: 5px;
+  list-style: none;
+}
+
+.results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* ------------------------------------- */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 50px;
+  z-index: 1000;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
