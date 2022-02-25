@@ -5,7 +5,6 @@ import API from '../API/API'
 // custom imports
 import MovieList from '../components/MovieComponents/MovieList'
 import Pagination from '../components/Pagination/Pagination'
-import seederList from '../seederList'
 
 export class HomeScreen extends Component {
   state: {
@@ -20,7 +19,7 @@ export class HomeScreen extends Component {
     Response: 'True' | 'False'
   } = {
     movieTitle: '',
-    Search: seederList,
+    Search: [],
     postsPerPage: 5,
     currentPage: 1,
     totalResults: '',
@@ -41,6 +40,25 @@ export class HomeScreen extends Component {
       }
     )
     this.setState({ Search: parsedSearch, totalResults, Response })
+  }
+
+  componentDidMount() {
+    const fetchSeederList = async () => {
+      const response = await fetch(`${API}s=Marvel`)
+      const { Search } = await response.json()
+
+      const parsedSearch = Search.map(
+        (movie: { Title: string; Poster: String }) => {
+          return {
+            Title: movie.Title,
+            Poster: movie.Poster,
+          }
+        }
+      )
+      this.setState({ Search: parsedSearch })
+    }
+
+    fetchSeederList()
   }
 
   render() {
