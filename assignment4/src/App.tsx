@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Layout, PageHeader } from 'antd'
+import 'antd/dist/antd.css'
+import { QueryClientProvider, QueryClient } from 'react-query'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import Todo from './components/TodoList/Todo'
 
-function App() {
+const client = new QueryClient()
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <QueryClientProvider client={client}>
+      <Layout>
+        <Layout.Content>
+          <PageHeader>
+            <Todo />
+          </PageHeader>
+        </Layout.Content>
+      </Layout>
+    </QueryClientProvider>
+  )
 }
 
-export default App;
+export default App
